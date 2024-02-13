@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트와 이벤트 객체</title>
+    <script>
+        function fn_msg(e){
+            console.log(e);
+            console.log(e.x);
+            console.log(e.y);
+        }
+        function fn_init(){
+            let p = document.getElementById("p_id");
+            // DOM객체 이벤트 프로퍼티에 등록
+            p.onmouseover = fn_msg; // defualt 첫번째 매개변수는 event
+        }
+        function fn_move(e){
+            let view = document.getElementById("view");
+            let str = "(screemX, screeY)="+e.screenX+","+e.screenY+"<br>";
+                str += "(offsetX, offsetY)="+e.offsetX+","+e.offsetY+"<br>";
+            view.innerHTML = str;
+        }
+    </script>
+</head>
+<!-- HTML element 이벤트리스너에 등록-->
+<body>onload="fn_init()">
+    <p id ="p_id">마우스를 올려보세요</p>
+    <button type="button"onclick="fn_msg(event)">클릭하세요</button>
+    <img src="./practice02/5bddba7b6574b95d37b6079c199d7101.jpg"alt=""onmousemove="fn_move(event)">
+    <div id="view" style="width: 250px;"></div>
+</body>
+</html>

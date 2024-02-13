@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 크기 출력</title>
+     <script>
+        function fn_change(){
+            let sel = document.getElementById("sel");
+            let img = document.getElementById("myImg");
+            img.onload = function(){
+                let mySpan = document.getElementById('mySpan');
+                myspan.innterHTML = img.width+ 'x' +img.height;
+            }
+            let dix = sel.selectedIndex;
+            img.src = sel.options[idx].value; 
+
+        }
+     </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body onload="fn_change()">
+    <h3>onload로 이미지 크기 출력</h3>
+    <script>
+        window.onload = function(){
+            fn_change();
+        }
+    </script>
+    <hr>
+        <from action="">
+            
+            <select name = "" id="sel" onchange="fn_change()">
+                <option value="./images(1).jpg">고전영화1</option>
+                <option value="./images.jpg">고전영화2</option>
+                <option value="./maxresdefault.jpg">고전영화3</option>
+                
+            </select>
+            <span id ="mySpan">이미지 크기 출력</span>
+        </from>
+        <p><img src = "" id ="myImg" alt=""></p>
+        
+
+    
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메소드</title>
+</head>
+<body>
+    <h3>Array method</h3>
+    <hr>
+    <script>
+        let a = ["황김","황이","김", "이"];
+        let b = new Array ("최", "박"); // 선언 및 초기화 (위와 같음)
+        //concat 배열결합
+        let c = a.concat(b);
+        console.log("c:",c);
+        //join 배열을 문자열고(구분자를 넣어서)
+        let d = c.join("|");
+        console.log("d=",d);
+        //revers 좌우 반전
+        console.log("reverse:",c.reverse());
+        // pop (마지막 요소삭제)
+        c.pop();
+        console.log("c:",c);
+        let shift = c.shift(); //처음요소 꺼내오고 배열에는 처음요소가 없어짐
+        console.log("c(shift):",c);
+        console.log("shift:",shift);
+        c.unshift("선우") // 처음 요소에 삽입
+        c.push("나") // 마지막 요소에 삽입
+        console.log("push:",c);
+        //slice 배열가져오기
+        let first = c.slice(1,3) //1번쨰 인덱스에서 3-1인덱스까지 가져오기
+        console.log(first);
+        console.log(c);
+
+
+
+        </script>
+    
+</body>
+</html>

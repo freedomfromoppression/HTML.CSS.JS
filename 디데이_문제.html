@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/d-day.css">
+    <title>디데이 계산기</title>
+    <style>
+        div calss container{
+            width: 450px; margin:0 auto ; border: 1px solid #ccc; border-radius: 2%; box-shadow: 2px 2px 5px #333;
+        }.day1{ 
+           padding-top: 20px;text-align: center;box-sizing: border-box;display: block;
+        }
+        day1 h3 {font-size: 1.2em;color: #666;box-sizing:}
+            *{box-sizing: border-box;}
+            h3{display: block;    margin-block-start: 1em;    margin-inline-start: 0px;margin-inline-end: 0px;
+                font-weight: bold;}
+        day1 { padding-top: 20px;text-align: center; }    
+            
+    
+            
+
+
+
+
+
+
+
+
+    </style>
+    <script>
+        
+        let startDate = prompt("처음 만난날을 입력해주세요","2017-08-15");
+        let firstDay = new Date(startDate); // 입력받은 날로 날짜객체 생성
+        console.log(firstDay);
+
+        
+        function calcDate(days){
+          console.log(document.getElementById("date"+days).innerHTML);
+        }
+
+    
+    </script>
+
+</head>
+
+<body>
+    
+    <div class="container">
+        <div class="day1">
+            <h3>우리 만난지</h3>
+            <p id="accent" class="accent"></p>
+        </div>
+        <div class="bar">기념일 계산</div>
+        
+      
+        <div class="day2">
+            <ul>
+                <li class="item-title">100일</li>
+                <li class="item-date" id="date100"></li>
+            </ul>
+            <ul>
+                <li class="item-title">200일</li>
+                <li class="item-date" id="date200"></li>
+            </ul>
+            <ul>
+                <li class="item-title">1주년</li>
+                <li class="item-date" id="date365"></li>
+            </ul>
+            <ul>
+                <li class="item-title">500일</li>
+                <li class="item-date" id="date500"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
