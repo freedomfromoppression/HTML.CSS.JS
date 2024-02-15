@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window.open</title>
+    <script>
+        let myWin=null;
+        function url_open(url){
+            myWin=open(url, "myWin", "left=0,top=0,width=300,height=300");
+        }
+        function fn_close(){
+            if(myWin == null || myWin.closed){
+                return;
+            }else{
+                myWin.close(); //팝업이 있는경우
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>window open 으로 윈도우 열기</h3>
+    <hr>
+    <a href="javascript:url_open('https://www.naver.com/')">네이버</a>
+    <a href="javascript:url_open('https://www.google.co.kr/?hl=ko')">구글</a>
+    <a href="javascript:url_close">닫기</a>
+    
+</body>
+</html>

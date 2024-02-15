@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js"></script>
+    <script>
+        function fn_check(){
+            let now = new Date();
+            if(document.getElementById("ckb")[0].checked){
+                now.setTime(now.getTime() + (2 * 60 * 1000));
+                setCookie('pop','N',now);
+
+
+            }
+            window.close();
+        }
+
+    </script>
+</head>
+<body>
+    <h3>팝업임</h3>
+    <hr>
+    2분 동안은 다시 안보기 <input type="checkbox" name="ckb">
+    <button type="button">닫기</button>
+    
+</body>
+</html>

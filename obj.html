@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript Object</title>
+</head>
+<body>
+    <script>
+        //객체 선언
+        //let place01= new Object();
+        let place01 = {}; //위와 동일함.
+        place01.name = "미래융합교육원";
+        place01.addr = '대전 서구 둔산동 1221번지';
+        place01.hp = '0424719222';
+        place01.check = function(){
+            alert("출첵!");
+        }
+        place01.check2 = fn_check;
+        function fn_check(){
+            console.log("출석");
+        }
+        console.log(place01);
+        console.log(typeof(place01));
+        // 객체의 속성정보 .속성명, 객체의 메소드사용, 메소드명()
+        place01.check();
+        place01.check2();
+        //선언, 초기값
+        let place02 = {
+            name:"우리집"
+            ,"addr": "대종로11"   //식별자 or ""을 써도 상관 없음.
+            , hp :1234
+            , test : [1, 2, "3"]
+            , go :function(){
+                //객체에 this는 객체 자신을 의미한.
+                console.log(this.name + "가자");
+            }
+        };
+        console.log(place02.name);
+        console.log(place02['hp']);    // 위와 동일 but 동적으로 객체
+                                       // 속성정보가 바뀔 수 있다면 []<-사용
+        for(let k in place02){
+            console.log("key:", k);
+            console.log("value:",place02[k]);
+            }
+            let keyArr = Object.keys(place02);
+            console.log(keyArr);
+            for(let i=0; i < keyArr.length; i++){
+                console.log(place02[keyArr[i]]);
+            }
+        </script>
+    
+</body>
+</html>
