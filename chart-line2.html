@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>라인차트</title>
+    <script>
+        $(document).ready(function () {
+            let ctx = document.getElementById("myChart");
+            let label_arr = [];
+            let rank1 = [];
+            let rank2 = [];
+            let mv_title = [];
+            let configs = {
+                type: 'line'
+                , data: {
+                    labels: label_arr
+                    , datasets: [
+                        { data: rank1 }
+                        , { data: rank2 }
+                    ]
+
+                }
+
+
+            }
+            let myChart = new Chart(ctx, configs);
+            $("#btn").click(function () {
+                //1. 사용자 입력 날짜 a~b 까지의 날짜생성.
+                //2. 각 날짜별로 api 요청
+                //    응답받는 데이터에서 1등 2등 영화의 해당일자 관객수 가져오기
+                //3. 차트 없데이트
+                let st = getDate($("#st").val().replaceAll("-", ""));
+                let end = getDate($("#end").val().replaceAll("-", ""));
+                console.log(st, end);
+                let dates = [];
+                while (st <= end) {
+                    dates.push(formatDate(st));
+                    st = new Date(st.setDate(st.getDate() + 1));
+                }
+
+                for(let i in dates){
+                    request_movie(dates[i]);
+                }
+
+
+
+
+
+
+
+
+            configs.data.labels = ['2024-01-21', '2024-01-22', '2024-01-23'];
+            configs.data.datasets[0].data = [1000, 2000, 3000];
+            configs.data.datasets[1].data = [2000, 1000, 2000];
+            configs.data.datasets[0]['label'] = '시민덕희'
+            configs.data.datasets[1]['label'] = '외계인2'
+            myChart.update();
+        });
+
+        function getDate(p_st, p_end) {
+            let year = p_st.substring(0, 4)
+            let month = p_st.substring(4, 6) - 1;
+            let day = p_st.substring(6, 8);
+            return new Date(year, month, day);
+
+
+        }
+        function formatDate(date) {
+            let year = date.getFullYear();
+            // 1자리 일경우 0추가
+            let month = (date.getMonth() + 1).toString().padStart(2, '0');
+            let day = date.getDate().toString().padStart(2, '0');
+            return year + month + day;
+        }
+        function request_movie(dt){
+            
+                let url= "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json"
+                let key= "7f7314005c9a1bb8ee535cedbd043a27";
+                $.ajax({
+                    url: url
+                    , data: { key: key, targetDt: dt }
+                    , type: 'GET'
+                    , dataType: 'json'
+                    , async : false
+                    , success: function (res) {
+                        console.log(res);
+                    }, error: function (e) {
+                        console.log(e);
+                    }
+               });
+            }
+         });
+
+
+
+
+
+    </script>
+
+</head>
+
+<body>
+    <h3>주간 박스오피스(라인차트)</h3>
+    <div style="width: 500px; height: 400px;">
+        <canvas id="myChart"></canvas>
+    </div>
+    <input type="date" id="st">
+    <input type="date" id="end">
+    <button id="btn">조회</button>
+
+
+</body>
+
+</html>
